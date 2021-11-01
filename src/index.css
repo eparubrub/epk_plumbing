@@ -1,0 +1,86 @@
+:root {
+  --color-brand: #004789;
+  --color-white: whitesmoke;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.navbar-container {
+  width: 100%;
+  height: 14vh;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.navbar-top {
+  background-color: var(--color-white);
+  width: 100%;
+  height: 90%;
+  position: relative;
+}
+
+.navbar-bottom {
+  background-color: var(--color-brand);
+  width: 100%;
+  height: 10%;
+  position: absolute;
+  bottom: 0px;
+}
+
+.app-container {
+  background-color: lightblue;
+  width: 100%;
+  min-height: 400vh; 
+}
+
+.navbar-button {
+  border-radius: 2vh;
+  background-color: var(--color-brand);
+  height: 5vh;
+  width: 30vw;
+  max-width: 200px;
+  top: 0;
+  bottom: 0;
+  right: 1.5vh;
+  margin: auto;
+  position: absolute;
+  text-align: center;
+  font-family: 'Roboto';
+  font-size: 120%;
+  color: whitesmoke;
+  line-height: 5vh;
+}
+
+.logo {
+  max-height: 60%;
+  max-width: 30%;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  margin-left: 2vh;
+  position: absolute;
+}
+
+
+/* Responsive
+ ----------------------------- */
+ @media (max-width: 300px) {
+   .navbar-button{
+     font-size: 80%;
+     height: 4vh;
+     line-height: 4vh;
+    }
+}
+
+@media (max-width: 200px) {
+  .navbar-button{
+    font-size: 50%;
+    height: 3vh;
+    line-height: 3vh;
+   }
+}
