@@ -29,7 +29,6 @@ function App() {
             <div className="main-button">
             <img className="link-png" src={"/images/yelp.png"} alt="mail png"/>
               <span className="link-text">Yelp Business Page</span>
-              
             </div>
           </div>
           <div className="flex-item main-card-img">
