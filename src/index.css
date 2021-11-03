@@ -106,11 +106,12 @@ body {
 }
 
 .main-description{
-  height: calc(45vh / 5vw);
+  height: 22.5;
   min-width: 300px;
   position: relative;
   margin-top: 10vh;
   padding: 20px;
+  background-color: red;
 }
 
 h1 {
