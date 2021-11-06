@@ -67,9 +67,6 @@ body {
   line-height: 5vh;
 }
 
-
-/* Top Flex Container
- ----------------------------- */
 .flex-container {
   position: relative;
   display: flex;
@@ -77,21 +74,28 @@ body {
   /* flex-flow: wrap-reverse; */
   justify-content: space-between;
   width: 90%;
-  height: 80vh;
+  height: 75vh;
   margin: 0 auto;
+  background-color: lightgreen;
 }
 
 .flex-item {
   position: relative;
 }
 
-.main-card-desc {
-  width: 65%;
+.flex-item-large {
+  width: 60%;
+  background-color: lightgoldenrodyellow;
 }
 
-.main-card-img {
-  width: 35%;
+.flex-item-small{
+  width: 40%;
+  background-color: lightblue;
 }
+
+
+/* 1st Main Flex Container
+ ----------------------------- */
 
 .main-img {
   max-width: 90%;
@@ -111,6 +115,7 @@ body {
   position: relative;
   margin-top: 10vh;
   padding: 20px;
+  background-color: red;
 }
 
 h1 {
@@ -157,6 +162,50 @@ p {
 
 .link-text{
   margin-left: .8vw;
+}
+
+/* 2nd Main Flex Container
+ ----------------------------- */
+
+.available-services-title{
+  text-align: center;
+}
+
+.available-services-container{
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+  padding: 0;
+  margin-top: 2.5%;
+  list-style-type: none;
+  width: 100%;
+  height: max-content;
+  background: lightgreen;
+}
+
+.available-services-item { 
+  width: 45%;
+  max-width: 300px;
+  min-width: 200px;
+  background: tomato;
+  margin-top: 2vw;
+}
+
+
+.available-services-sub-item-title{
+  font-family: "Archivo";
+  margin: 10px;
+  font-size: 1.5em;
+}
+
+
+.available-services-sub-item { 
+  font-family: "Archivo";
+  list-style-type: none;
+  margin: 10px ;
+  font-size: .8em;
+  height: inherit;
+  margin-top: 1vw;
 }
 
 /* Responsive
