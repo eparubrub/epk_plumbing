@@ -1,11 +1,33 @@
 import React from 'react';
 import Navbar from './Navbar';
+import Slideshow from './Slideshow';
 
-function App() {
-  return (
+class App extends React.Component{
+  servicesImages = {
+    Bathroom : ["/images/Bathroom3.jpg", "/images/Bathroom2.jpg", "/images/Bathroom1.jpg"],
+    Plumbing : ["/images/Plumbing3.jpg", "/images/Plumbing2.jpg", "/images/Plumbing1.jpg"],
+    Flooring : ["/images/Flooring3.jpg", "/images/Flooring2.jpg", "/images/Flooring1.jpg"],
+    // painting = ["/images/Bathroom3.jpg", "/images/Bathroom2.jpg", "/images/Bathroom1.jpg"]
+  };
+  state = {
+    currentServices: "Flooring",
+    currentSlideshowImages: this.servicesImages["Flooring"],
+  };
+  constructor() {
+    super();
+    this.myRef = React.createRef();
+  }
+  selectServicesImages = service => {
+      this.setState({currentServices: service});
+      this.setState({currentSlideshowImages: this.servicesImages[service]});
+      console.log(this.myRef);
+      let offset = this.myRef.current.offsetHeight + this.myRef.current.offsetTop;
+      window.scrollTo({ behavior: 'smooth', top: offset});
+  };
+  render(){
+    return(
       <div className="app-container">
         <Navbar/>
-
         <div className="flex-container">
           <div className="flex-item flex-item-large">
             <div className="main-description">
@@ -38,12 +60,16 @@ function App() {
         </div>
 
         <div className="flex-container">
-          <div className="flex-item flex-item-small">
+          
+          <div className="flex-item flex-item-small" ref={this.myRef}>
+            <Slideshow currentSlideshowImages={this.state.currentSlideshowImages}/>
+            {/* <img className="main-img" src={"/images/Bathroom3.jpeg"} alt="main business pic"/> */}
           </div>
-          <div className="flex-item flex-item-large ">
+
+          <div className="flex-item flex-item-large">
             <h1 className="available-services-title">Available Services</h1>
             <ul className="available-services-container">
-              <li class="available-services-item">
+              <li class="available-services-item" onClick={() => this.selectServicesImages("Plumbing")}>
                 <h3 className="available-services-sub-item-title">Plumbing</h3>
                 <li className="available-services-sub-item">Drain Installation & Cleaning</li>
                 <li className="available-services-sub-item">Water Heater Installation & Repair</li>
@@ -53,7 +79,7 @@ function App() {
                 <li className="available-services-sub-item">Leak Detection</li>
                 <li className="available-services-sub-item">Garbage Disposal Installation & Repair</li>
               </li>
-              <li class="available-services-item">
+              <li class="available-services-item" onClick={() => this.selectServicesImages("Flooring")}>
                 <h3 className="available-services-sub-item-title">Flooring</h3>
                 <li className="available-services-sub-item">Laminate Floor Repair</li>
                 <li className="available-services-sub-item">Tile Floor Installation & Restoration</li>
@@ -64,7 +90,7 @@ function App() {
                 <li className="available-services-sub-item">Concrete Floor Repair</li>
                 <li className="available-services-sub-item">Laminate Floor Installation</li>
               </li>
-              <li class="available-services-item">
+              <li class="available-services-item" onClick={() => this.selectServicesImages("Bathroom")}>
                 <h3 className="available-services-sub-item-title">Bathroom & Other</h3>
                 <li className="available-services-sub-item">Toilet Installation & Repair</li>
                 <li className="available-services-sub-item">Bathtub Installation & Repair</li>
@@ -86,7 +112,8 @@ function App() {
           </div>
         </div>
       </div>
-  );
+    );
+  }
 }
 
 export default App;
