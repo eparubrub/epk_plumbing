@@ -20,7 +20,6 @@ class App extends React.Component{
   selectServicesImages = service => {
       this.setState({currentServices: service});
       this.setState({currentSlideshowImages: this.servicesImages[service]});
-      console.log(this.myRef);
       let offset = this.myRef.current.offsetHeight + this.myRef.current.offsetTop;
       window.scrollTo({ behavior: 'smooth', top: offset});
   };
@@ -28,7 +27,7 @@ class App extends React.Component{
     return(
       <div className="app-container">
         <Navbar/>
-        <div className="flex-container">
+        <div className="flex-container top-container">
           <div className="flex-item flex-item-large">
             <div className="main-description">
               <h1>EPK Plumbing</h1>
@@ -54,12 +53,12 @@ class App extends React.Component{
                 <span className="link-text">Yelp Business Page</span>
             </div>
           </div>
-          <div className="flex-item flex-item-small">
+          <div className="flex-item flex-item-small main-img-container">
             <img className="main-img" src={"/images/MainImg.jpg"} alt="main business pic"/>
           </div>
         </div>
 
-        <div className="flex-container">
+        <div className="flex-container ">
           
           <div className="flex-item flex-item-small" ref={this.myRef}>
             <Slideshow currentSlideshowImages={this.state.currentSlideshowImages}/>

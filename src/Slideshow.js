@@ -31,7 +31,6 @@ const Slideshow = (props) =>{
 
   return (
     <div className="slideshow">
-          {console.log(props)}
       <div
         className="slideshowSlider"
         style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
