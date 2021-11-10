@@ -1,6 +1,10 @@
 import React from 'react';
 import Navbar from './Navbar';
 import Slideshow from './Slideshow';
+import smoothscroll from 'smoothscroll-polyfill';
+
+// kick off the polyfill!
+smoothscroll.polyfill();
 
 class App extends React.Component{
   servicesImages = {
@@ -10,6 +14,21 @@ class App extends React.Component{
     // painting = ["/images/Bathroom3.jpg", "/images/Bathroom2.jpg", "/images/Bathroom1.jpg"]
   };
   state = {
+    select: {
+      "Bathroom": {
+        "textDecoration": "none",
+        "background": "none",
+      },
+      "Plumbing": {
+        "textDecoration": "none",
+        "background": "none",
+      },
+      "Flooring": {
+        "background": "linear-gradient(to right, #5EB1FF, white)",
+        "textDecoration": "underline",
+      }
+        // "Painting": "none"
+    },
     currentServices: "Flooring",
     currentSlideshowImages: this.servicesImages["Flooring"],
   };
@@ -18,10 +37,18 @@ class App extends React.Component{
     this.myRef = React.createRef();
   }
   selectServicesImages = service => {
-      this.setState({currentServices: service});
-      this.setState({currentSlideshowImages: this.servicesImages[service]});
-      let offset = this.myRef.current.offsetHeight + this.myRef.current.offsetTop;
-      window.scrollTo({ behavior: 'smooth', top: offset});
+    var new_select = {
+      "Bathroom": {"textDecoration": "none","background": "none",},
+      "Plumbing": {"textDecoration": "none","background": "none",},
+      "Flooring": {"textDecoration": "none","background": "none",}
+    };
+    new_select[service].textDecoration = "underline";
+    new_select[service].background = "linear-gradient(to right, #5EB1FF, white)";
+    this.setState({select: new_select})
+    this.setState({currentServices: service});
+    this.setState({currentSlideshowImages: this.servicesImages[service]});
+    let offset = this.myRef.current.offsetHeight + (this.myRef.current.offsetHeight / 2) + this.myRef.current.offsetTop;
+    window.scrollTo({ behavior: 'smooth', top: offset});
   };
   render(){
     return(
@@ -60,16 +87,17 @@ class App extends React.Component{
 
         <div className="flex-container ">
           
-          <div className="flex-item flex-item-small" ref={this.myRef}>
-            <Slideshow currentSlideshowImages={this.state.currentSlideshowImages}/>
-            {/* <img className="main-img" src={"/images/Bathroom3.jpeg"} alt="main business pic"/> */}
+          <div className="flex-item flex-item-small slideshow-container" ref={this.myRef}>
+            <Slideshow currentSlideshowImages={this.state.currentSlideshowImages} currentServices={this.state.currentServices}/>
           </div>
 
           <div className="flex-item flex-item-large">
             <h1 className="available-services-title">Available Services</h1>
             <ul className="available-services-container">
               <li class="available-services-item" onClick={() => this.selectServicesImages("Plumbing")}>
-                <h3 className="available-services-sub-item-title">Plumbing</h3>
+                <h3 className="available-services-sub-item-title" 
+                  style={{textDecoration: this.state.select.Plumbing.textDecoration, background: this.state.select.Plumbing.background}}
+                >Plumbing</h3>
                 <li className="available-services-sub-item">Drain Installation & Cleaning</li>
                 <li className="available-services-sub-item">Water Heater Installation & Repair</li>
                 <li className="available-services-sub-item">Sink Installation & Repair</li>
@@ -79,7 +107,9 @@ class App extends React.Component{
                 <li className="available-services-sub-item">Garbage Disposal Installation & Repair</li>
               </li>
               <li class="available-services-item" onClick={() => this.selectServicesImages("Flooring")}>
-                <h3 className="available-services-sub-item-title">Flooring</h3>
+                <h3 className="available-services-sub-item-title"  
+                  style={{textDecoration: this.state.select.Flooring.textDecoration, background: this.state.select.Flooring.background}}
+                >Flooring</h3>
                 <li className="available-services-sub-item">Laminate Floor Repair</li>
                 <li className="available-services-sub-item">Tile Floor Installation & Restoration</li>
                 <li className="available-services-sub-item">Tile Floor Repair</li>
@@ -90,7 +120,9 @@ class App extends React.Component{
                 <li className="available-services-sub-item">Laminate Floor Installation</li>
               </li>
               <li class="available-services-item" onClick={() => this.selectServicesImages("Bathroom")}>
-                <h3 className="available-services-sub-item-title">Bathroom & Other</h3>
+                <h3 className="available-services-sub-item-title" 
+                    style={{textDecoration: this.state.select.Bathroom.textDecoration, background: this.state.select.Bathroom.background}}
+                >Bathroom & Other</h3>
                 <li className="available-services-sub-item">Toilet Installation & Repair</li>
                 <li className="available-services-sub-item">Bathtub Installation & Repair</li>
                 <li className="available-services-sub-item">Shower Installation & Repair</li>

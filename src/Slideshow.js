@@ -2,7 +2,7 @@
 
 import React from 'react';
 // const images = ["/images/Plumbing3.jpg", "/images/Bathroom1.jpg", "/images/Plumbing1.jpg"]
-const delay = 3000;
+const delay = 4000;
 
 const Slideshow = (props) =>{
   const [index, setIndex] = React.useState(0);
@@ -31,6 +31,7 @@ const Slideshow = (props) =>{
 
   return (
     <div className="slideshow">
+      <h3 className="slideshowTitle">{props.currentServices}</h3>
       <div
         className="slideshowSlider"
         style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
