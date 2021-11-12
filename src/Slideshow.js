@@ -18,8 +18,8 @@ const Slideshow = (props) =>{
     resetTimeout();
     timeoutRef.current = setTimeout(
       () =>
-        setIndex((prevIndex) =>
-          prevIndex === props.currentSlideshowImages.length - 1 ? 0 : prevIndex + 1
+        setIndex((prevIndex, currentSlideshowLength) =>
+          prevIndex === currentSlideshowLength - 1 ? 0 : prevIndex + 1
         ),
       delay
     );
@@ -52,7 +52,7 @@ const Slideshow = (props) =>{
             key={idx}
             className={`slideshowDot${index === idx ? " active" : ""}`}
             onClick={() => {
-              setIndex(idx);
+              setIndex(idx, props.currentSlideshowImages.length);
             }}
           ></div>
         ))}
