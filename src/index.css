@@ -8,6 +8,10 @@ body {
   padding: 0px;
 }
 
+a{
+  text-decoration: none;
+}
+
 .app-container {
   width: 100%;
 }
@@ -40,6 +44,7 @@ body {
 .logo {
   max-height: 60%;
   max-width: 30%;
+  min-height: 45px;
   top: 0;
   bottom: 0;
   margin: auto;
@@ -65,11 +70,13 @@ body {
   font-weight: 400;
   font-size: 1.2em;
   color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.navbar-button-text{
-  height: 100%;
-  line-height: 240%
+.navbar-button > span{
+  margin: 20px;
 }
 
 /* Flexboxes
@@ -82,12 +89,17 @@ body {
   justify-content: space-between;
   width: 90%;
   max-width: 1500px;
-  height: 50%;
   margin: 0 auto;
+  height: fit-content;
 }
 
 .top-container{
+  height: 600px;
   flex-flow: wrap-reverse;
+  margin-bottom: 5vw;
+}
+
+.bottom-conatainer{
   margin-bottom: 50px;
 }
 
@@ -108,7 +120,7 @@ body {
  ----------------------------- */
 
 .main-img {
-  height: 80%;
+  height: 90%;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -121,7 +133,6 @@ body {
   height: 22.5;
   min-width: 300px;
   position: relative;
-  margin-top: 10vh;
   padding: 20px;
 }
 
@@ -148,8 +159,9 @@ body {
   background-color: var(--color-brand);
   border-radius: 1.2vh;
   height: 5vh;
+  line-height: 5vh;
   width: 90%;
-  margin-top: 3vh;
+  margin-top: 30px;
   margin-left: 1.5vw;
   position: relative;
   text-align: left;
@@ -157,13 +169,12 @@ body {
   font-weight: 400;
   font-size: 1.2em;
   color: var(--color-white);
-  line-height: 5vh;
 }
 
 .link-png {
-  max-height: 55%;
-  max-width:  5%;
-  margin-left: 1vw;
+  max-height: 65%;
+  max-width:  40px;
+  margin-left: 12px;
   vertical-align: middle;
 }
 
@@ -203,7 +214,6 @@ body {
   cursor: pointer;
 }
 
-
 .available-services-sub-item-title{
   font-family: "Archivo";
   margin: 10px;
@@ -211,7 +221,6 @@ body {
   text-decoration: none;
   color: var(--color-brand);
 }
-
 
 .available-services-sub-item { 
   font-family: "Archivo";
@@ -224,7 +233,7 @@ body {
 
 /* Slideshow */
 .slideshow {
-  margin: 25% auto;
+  margin: 5% auto;
   overflow: hidden;
   max-width: 90%;
   text-align: center;
@@ -272,15 +281,20 @@ body {
 
 /* Responsive
  ----------------------------- */
+ @media screen and (max-width: 1150px) {
+  .slideshow {
+    margin: 25% auto;
+    overflow: hidden;
+    height: fit-content;
+  }
+}
  @media screen and (max-width: 800px) {
   .flex-container{
     height: fit-content;
   }
   .main-img-container {
     height: 55vh;
-  }
-  .main-img{
-    height: 90%;
+    min-height: 450px;
   }
   .flex-item-large {
     width: 100%;
@@ -310,31 +324,47 @@ body {
     margin-top: 0;
   }
   .main-button {
+    height: 38px;
+    line-height: 38px;
+    width: 90%;
     margin: 15px;
   }
+  .link-png {
+    max-width:  30px;
+  }
+  .link-text{
+    margin-left: 10px;
+  }
+
   .app-container{
     min-width: 320px;
   }
-  .slideshow-container{
-    height: fit-content;
-  }
   .slideshow {
-    margin: 10% auto;
-    overflow: hidden;
+    margin: 5% auto;
+    margin-bottom: 75px;
+    width: 80%;
+    max-width: 425px;
     height: fit-content;
   }
   .available-services-container{
     justify-content: space-around;
   }
   .available-services-item{
+    max-width: none;
     width: 90%;
   }
-}
-
- @media screen and (max-width: 300px) {
-  .navbar-button{
-    font-size: .7em;
-    height: 3.5vh;
-    line-height: 3.5vh;
-   }
+  .available-services-title{
+    font-size: 2.5em;
+    margin: 5px;
+  }
+  .available-services-sub-item-title{
+    font-size: 1.6em;
+  }
+  .available-services-sub-item { 
+    font-size: 1em;
+    margin-top: 15px;
+  }
+  .top-container{
+    margin-bottom: 0;
+  }
 }

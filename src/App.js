@@ -25,13 +25,13 @@ class App extends React.Component{
   };
   state = {
     select: {
-      "Flooring": selectedServiceTitleDecoration,
+      "Flooring": standardServiceTitleDecoration,
       "Bathroom": standardServiceTitleDecoration,
-      "Plumbing": standardServiceTitleDecoration,
+      "Plumbing": selectedServiceTitleDecoration,
       "Painting": standardServiceTitleDecoration,
     },
-    currentServices: "Flooring",
-    currentSlideshowImages: this.servicesImages["Flooring"],
+    currentServices: "Plumbing",
+    currentSlideshowImages: this.servicesImages["Plumbing"],
   };
   constructor() {
     super();
@@ -48,7 +48,7 @@ class App extends React.Component{
     this.setState({select: new_select})
     this.setState({currentServices: service});
     this.setState({currentSlideshowImages: this.servicesImages[service]});
-    let offset = this.myRef.current.offsetHeight + (this.myRef.current.offsetHeight / 2) + this.myRef.current.offsetTop;
+    let offset = (this.myRef.current.offsetHeight * 1.65);
     window.scrollTo({ behavior: 'smooth', top: offset});
   };
   render(){
@@ -68,30 +68,33 @@ class App extends React.Component{
                 to request a quote.
               </p>
             </div>
-            <div className="main-button">
-              <img className="link-png" src={"/images/mail.png"} alt="mail png"/>
-              <span className="link-text">email@gmail.com</span>
-            </div>
-            <div className="main-button">
-              <img className="link-png" src={"/images/phone.png"} alt="phone png"/>
-                <span className="link-text">(808) 123-4567</span>
-            </div>
-            <div className="main-button">
-              <img className="link-png" src={"/images/yelp.png"} alt="yelp png"/>
-                <span className="link-text">Yelp Business Page</span>
-            </div>
+            <a href="mailto:Edsparubrub@gmail.com">
+              <div className="main-button">
+                <img className="link-png" src={"/images/mail.png"} alt="mail png"/>
+                <span className="link-text">Edsparubrub@gmail.com</span>
+              </div>
+            </a>
+            <a href="tel:808-753-9483">
+              <div className="main-button">
+                <img className="link-png" src={"/images/phone.png"} alt="phone png"/>
+                <span className="link-text">(808) 753-9483</span>
+              </div>
+            </a>
+            <a href="https://www.yelp.com/biz/epk-plumbing-kaneohe">
+              <div className="main-button">
+                <img className="link-png" src={"/images/yelp.png"} alt="yelp png"/>
+                  <span className="link-text">Yelp Business Page</span>
+              </div>
+            </a>
           </div>
           <div className="flex-item flex-item-small main-img-container">
             <img className="main-img" src={"/images/MainImg.jpg"} alt="main business pic"/>
           </div>
         </div>
-
-        <div className="flex-container ">
-          
-          <div className="flex-item flex-item-small slideshow-container" ref={this.myRef}>
+        <div className="flex-container bottom-container">
+          <div className="flex-item flex-item-small" ref={this.myRef}>
             <Slideshow currentSlideshowImages={this.state.currentSlideshowImages} currentServices={this.state.currentServices}/>
           </div>
-
           <div className="flex-item flex-item-large">
             <h1 className="available-services-title">Available Services</h1>
             <ul className="available-services-container">
