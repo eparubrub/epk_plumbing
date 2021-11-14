@@ -5,28 +5,30 @@ import smoothscroll from 'smoothscroll-polyfill';
 
 smoothscroll.polyfill();
 
+let standardServiceTitleDecoration = {
+  "textDecoration": "none",
+  "background": "none",
+  "color": "#004789"
+}
+let selectedServiceTitleDecoration = {
+  "textDecoration": "underline",
+  "background": "linear-gradient(to right, #5EB1FF, white)",
+  "color": "black"
+}
+
 class App extends React.Component{
   servicesImages = {
     Bathroom : ["/images/Bathroom3.jpg", "/images/Bathroom2.jpg", "/images/Bathroom1.jpg"],
     Plumbing : ["/images/Plumbing3.jpg", "/images/Plumbing2.jpg", "/images/Plumbing1.jpg"],
     Flooring : ["/images/Flooring3.jpg", "/images/Flooring2.jpg", "/images/Flooring1.jpg"],
-    // painting = ["/images/Bathroom3.jpg", "/images/Bathroom2.jpg", "/images/Bathroom1.jpg"]
+    Painting : ["/images/Painting3.jpg", "/images/Painting2.jpg", "/images/Painting1.jpg"]
   };
   state = {
     select: {
-      "Bathroom": {
-        "textDecoration": "none",
-        "background": "none",
-      },
-      "Plumbing": {
-        "textDecoration": "none",
-        "background": "none",
-      },
-      "Flooring": {
-        "background": "linear-gradient(to right, #5EB1FF, white)",
-        "textDecoration": "underline",
-      }
-        // "Painting": "none"
+      "Flooring": selectedServiceTitleDecoration,
+      "Bathroom": standardServiceTitleDecoration,
+      "Plumbing": standardServiceTitleDecoration,
+      "Painting": standardServiceTitleDecoration,
     },
     currentServices: "Flooring",
     currentSlideshowImages: this.servicesImages["Flooring"],
@@ -37,12 +39,12 @@ class App extends React.Component{
   }
   selectServicesImages = service => {
     var new_select = {
-      "Bathroom": {"textDecoration": "none","background": "none",},
-      "Plumbing": {"textDecoration": "none","background": "none",},
-      "Flooring": {"textDecoration": "none","background": "none",}
+      "Flooring": standardServiceTitleDecoration,
+      "Bathroom": standardServiceTitleDecoration,
+      "Plumbing": standardServiceTitleDecoration,
+      "Painting": standardServiceTitleDecoration,
     };
-    new_select[service].textDecoration = "underline";
-    new_select[service].background = "linear-gradient(to right, #5EB1FF, white)";
+    new_select[service] = selectedServiceTitleDecoration;
     this.setState({select: new_select})
     this.setState({currentServices: service});
     this.setState({currentSlideshowImages: this.servicesImages[service]});
@@ -95,7 +97,9 @@ class App extends React.Component{
             <ul className="available-services-container">
               <li class="available-services-item" onClick={() => this.selectServicesImages("Plumbing")}>
                 <h3 className="available-services-sub-item-title" 
-                  style={{textDecoration: this.state.select.Plumbing.textDecoration, background: this.state.select.Plumbing.background}}
+                  style={{textDecoration: this.state.select.Plumbing.textDecoration, 
+                    background: this.state.select.Plumbing.background,
+                    color: this.state.select.Plumbing.color}}
                 >Plumbing</h3>
                 <li className="available-services-sub-item">Drain Installation & Cleaning</li>
                 <li className="available-services-sub-item">Water Heater Installation & Repair</li>
@@ -107,7 +111,9 @@ class App extends React.Component{
               </li>
               <li class="available-services-item" onClick={() => this.selectServicesImages("Flooring")}>
                 <h3 className="available-services-sub-item-title"  
-                  style={{textDecoration: this.state.select.Flooring.textDecoration, background: this.state.select.Flooring.background}}
+                  style={{textDecoration: this.state.select.Flooring.textDecoration, 
+                    background: this.state.select.Flooring.background,
+                    color: this.state.select.Flooring.color}}
                 >Flooring</h3>
                 <li className="available-services-sub-item">Laminate Floor Repair</li>
                 <li className="available-services-sub-item">Tile Floor Installation & Restoration</li>
@@ -120,7 +126,9 @@ class App extends React.Component{
               </li>
               <li class="available-services-item" onClick={() => this.selectServicesImages("Bathroom")}>
                 <h3 className="available-services-sub-item-title" 
-                    style={{textDecoration: this.state.select.Bathroom.textDecoration, background: this.state.select.Bathroom.background}}
+                  style={{textDecoration: this.state.select.Bathroom.textDecoration, 
+                    background: this.state.select.Bathroom.background,
+                    color: this.state.select.Bathroom.color}}
                 >Bathroom & Other</h3>
                 <li className="available-services-sub-item">Toilet Installation & Repair</li>
                 <li className="available-services-sub-item">Bathtub Installation & Repair</li>
@@ -129,8 +137,12 @@ class App extends React.Component{
                 <li className="available-services-sub-item">Water Filter Services</li>
                 <li className="available-services-sub-item">Water Heater Repair</li>
               </li>
-              <li class="available-services-item">
-                <h3 className="available-services-sub-item-title">Painting</h3>
+              <li class="available-services-item" onClick={() => this.selectServicesImages("Painting")}>
+                <h3 className="available-services-sub-item-title" 
+                    style={{textDecoration: this.state.select.Painting.textDecoration, 
+                      background: this.state.select.Painting.background,
+                      color: this.state.select.Painting.color}}
+                >Painting</h3>
                 <li className="available-services-sub-item">Ceiling & Wall Painting</li>
                 <li className="available-services-sub-item">Color Matching</li>
                 <li className="available-services-sub-item">Interior Painting</li>
