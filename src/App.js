@@ -18,10 +18,10 @@ let selectedServiceTitleDecoration = {
 
 class App extends React.Component{
   servicesImages = {
-    Bathroom : ["/images/Bathroom3.jpg", "/images/Bathroom2.jpg", "/images/Bathroom1.jpg"],
-    Plumbing : ["/images/Plumbing3.jpg", "/images/Plumbing2.jpg", "/images/Plumbing1.jpg"],
-    Flooring : ["/images/Flooring3.jpg", "/images/Flooring2.jpg", "/images/Flooring1.jpg"],
-    Painting : ["/images/Painting3.jpg", "/images/Painting2.jpg", "/images/Painting1.jpg"]
+    Bathroom : ["/images/Bathroom1.jpg", "/images/Bathroom2.jpg", "/images/Bathroom3.jpg"],
+    Plumbing : ["/images/Plumbing1.jpg", "/images/Plumbing2.jpg", "/images/Plumbing3.jpg"],
+    Flooring : ["/images/Flooring1.jpg", "/images/Flooring2.jpg", "/images/Flooring3.jpg"],
+    Painting : ["/images/Painting1.jpg", "/images/Painting2.jpg", "/images/Painting3.jpg"]
   };
   state = {
     select: {
